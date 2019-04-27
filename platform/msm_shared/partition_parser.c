@@ -96,6 +96,15 @@ struct partition_entry* partition_get_partition_entries()
 	return partition_entries;
 }
 
+void partition_offset_boot(uint32_t block_size)
+{
+	int index = partition_get_index("boot");
+	int offset = (1 * 1024 * 1024) / block_size;
+
+	partition_entries[index].first_lba += offset;
+	partition_entries[index].size -= offset;
+}
+
 unsigned int partition_read_table()
 {
 	unsigned int ret;
@@ -130,6 +139,7 @@ unsigned int partition_read_table()
 	/* TODO: Move this to mmc_boot_read_gpt() */
 	partition_scan_for_multislot();
 
+	partition_offset_boot(block_size);
 	return 0;
 }
 
