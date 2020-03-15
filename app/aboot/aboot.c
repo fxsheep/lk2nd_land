@@ -5154,6 +5154,7 @@ void aboot_init(const struct app_descriptor *app)
 	if (!check_alarm_boot()) {
 #endif
 		dprintf(SPEW, "Display Init: Start\n");
+		strcpy(device.display_panel,"hx8394f_boe_720p_video");
 #if DISPLAY_HDMI_PRIMARY
 	if (!strlen(device.display_panel))
 		strlcpy(device.display_panel, DISPLAY_PANEL_HDMI,
