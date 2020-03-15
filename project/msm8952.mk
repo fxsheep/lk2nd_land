@@ -58,8 +58,9 @@ DEFINES += TARGET_MAX_WLED_STRINGS=2
 
 DEFINES += BAM_V170=1
 
-#Enable the feature of long press power on
-DEFINES += LONG_PRESS_POWER_ON=1
+#We don't want to press the power button for 5s to
+#pass both stock and 2nd lk
+#DEFINES += LONG_PRESS_POWER_ON=1
 
 ifeq ($(ENABLE_RPMB_SUPPORT),1)
 DEFINES += USE_RPMB_FOR_DEVINFO=1
