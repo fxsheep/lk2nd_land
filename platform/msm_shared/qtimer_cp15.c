@@ -34,6 +34,12 @@
 #include <platform/iomap.h>
 #include <platform/interrupts.h>
 
+
+#include <arch.h>
+#include <arch/arm.h>
+#include <arch/defines.h>
+#include <arch/arm/mmu.h>
+
 static platform_timer_callback timer_callback;
 static void *timer_arg;
 static time_t timer_interval;
@@ -41,7 +47,6 @@ static time_t timer_interval;
 static volatile uint32_t current_time;
 static uint32_t tick_count;
 
-extern void isb();
 static void qtimer_enable();
 
 static enum handler_return qtimer_irq(void *arg)
